@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <!-- 控制台输出 -->
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p [%c.%M(%L)] %m%n"/>
+        </layout>
+    </appender>
+
+    <!-- 文件输出 -->
+    <appender name="ALL" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${user.dir}/logs/sign.log"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <param name="encoding" value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p [%c.%M(%t::%L)] %m%n"/>
+        </layout>
+    </appender>
+
+    <!-- biz -->
+    <!--<logger name="com.signadditivity="false">-->
+        <!--<level value="debug"/>-->
+        <!--<appender-ref ref="ALL"/>-->
+        <!--<appender-ref ref="CONSOLE"/>-->
+    <!--</logger>-->
+
+    <!--定义其他-->
+    <root>
+        <level value="debug"/>
+        <appender-ref ref="ALL"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</log4j:configuration>
