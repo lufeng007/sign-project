@@ -30,6 +30,7 @@ public class WankeSignExecute {
         //用户名号码密文明文集合
         Map<String,String> phoneMap = new HashMap<String, String>();
         phoneMap.put("MTUwNjgxMTY4OTc=", "15068116897");
+        phoneMap.put("MTczNjk2MzA1NzE=", "17369630571");
         phoneMap.put("MTU4NTgxMDUyNDQ=", "15858105244");
         phoneMap.put("MTUxNTgxMDQ5Nzg=", "15158104978");
         phoneMap.put("MTgyNTgyOTkxMjU=", "18258299125");
@@ -43,6 +44,8 @@ public class WankeSignExecute {
 
         //密码
         String password = "Mzk0NTQ4";
+        String password0571 = "MTM3MDU4NTQ4OTFx";//13705854891q
+        String password8092 = "YWI3Nzg4OTk=";
         //指定执行时间点
         String executeHour = "09";
         //表示登陆成功
@@ -86,6 +89,11 @@ public class WankeSignExecute {
                     loginDO.setLoginType(1);
                     loginDO.setAccountName(key);
                     loginDO.setPassword(password);
+                    if ("MTUwNjgxMTY4OTc=".equals(key)) {
+                        loginDO.setPassword(password0571);
+                    } else if ("MTUzMDU1NjgwOTI=".equals(key) || "MTUxNjcxMDEwMjI=".equals(key)) {
+                        loginDO.setPassword(password8092);
+                    }
                     bodyDO.setBody(loginDO);
                     jsonString = HttpRequest.object2Json(bodyDO);
                     httpRequestDO.setParam(jsonString);
